@@ -1,0 +1,8 @@
+---
+----------------> DESTRUCTURING ARRAYS
+
+- basic syntax;
+
+- basic JS features 
+
+
