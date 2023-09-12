@@ -37,8 +37,83 @@ const restaurant = {
       `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
 };
 
+// we want to create a new array based on this one - but with some new elements at the beginning:
+
+const arr = [7, 8, 9];
+
+// doing manually:
+
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+
+console.log(badNewArr);
+// But now since ES6 we can do it in a much better way: using the spread operator ...
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...newArr); // HERE IT SHOWS ALL THE ELEMENTS INDIVIDUALLY
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci']; // HERE WE ARE CREATING A COMPLETELY NEW ARRAY
+
+console.log(newMenu);
+
+// TO IMPORTANT USE CASES OF THE SPREAD OPERATOR: CREATE SHALLOW COPIES OF ARRAYS, AND TO MERGE TWO ARRAYS TOGETHER;
+
+const mainMenuCopy = [...restaurant.mainMenu]; // shallow copy
+
+// Join two arrays together:
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+// we can use the spread operator on a string as well
+// so I want to creat an array which contains all the individual letters plus some other elements
+
+const str = 'Jonas';
+const letters = [...str, '', 'S.'];
+
+// so we use the spread operator only on an array or when we passa values into a function - WE NEED TO USE IT IN PLACES WHERE YOU EXPECT MULTIPLES ELEMENTS
+// SEPARATED BY A COMMA
+
+console.log(letters);
+
+//------> EVER SINCE 2018 THE SPREAD OPERATOR ALSO WORKS FOR OBJECTS EVEN THOUGH THEY'RE NOT ITERABLE
+
+// Create a new restaurant object with all the data from the original one plus some aditional data
+
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Giuseppe' }; // the order doesn't really matter. the spread could be the second element
+
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+
+console.log(restaurant.name);
+console.log(restaurantCopy.name);
+
+// each element will be defined by a prompt window:
+
+/*const ingredients = [
+  prompt("Let's make pasta! Ingredient 1? "),
+  prompt('Ingredient 2?'),
+  prompt('Ingredient 3?'),
+]; 
+
+console.log(ingredients);
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+
+restaurant.orderPasta(...ingredients); */
+
+/*
 // calling the function and passing it an object of options
 restaurant.orderDelivery({
   time: '22:30',
