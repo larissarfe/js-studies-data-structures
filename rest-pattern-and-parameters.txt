@@ -1,0 +1,68 @@
+
+-------------> REST PATTERN AND REST PARAMETERS: 
+
+-> The rest pattern looks exactly like the spread operator 
+
+It has the same syntax with ... BUT IT DOES THE OPPOSITE OF THE SPREAD OPERATOR
+
+// ==============================> THE REST PATTERN
+
+// uses the exact same syntax - HOWEVER, TO COLLECT MULTIPLE ELEMENTS AND CONDENSE THEM INTO AN ARRAY
+
+// THE OPOSSITE OF SPREAD - THE SPREAD OPERATOR IS TO UNPACK AN ARRAY WHILE REST IS TO PACK ELEMENTS INTO AN ARRAY
+
+// WE KNOW WE ARE USING AN SPREAD OPERATOR BECAUSE WE ARE USING IT ON THE RIGHT HAND SIGHT OF THE = SIGN
+
+// spread before the =
+
+// THE REST PATTERN CAN BE USED WHERE WE WOULD WRITE VARIABLE NAMES SEPARATED BY COMMAS AND NOT VALUES SEPARATED BY COMMAS 
+
+// ========================== > 1) DESTRUCTURING:
+
+const arr = [1, 2, ...[3, 4]];
+
+// REST ON THE LEFT OF THE =
+// the rest pattern basically collects the elements that are unused in the destructuring assignment
+
+const [a, b, ...others] = [1, 2, 3, 4, 5]; // the remaining elements of the array will be put in a new array called others
+
+console.log(a, b, others);
+
+// USING BOTH THE SPREAD OPERATOR AND THE REST PATTERN:
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood); // the other food that a didn't put into variables are in the array called otherFood
+
+// the rest syntax collects all the array elements after the last variable - IT DOES NOT INCLUDED ANY SKIPED ELEMENTS
+
+// NOW WITH OBJECTS: THE REST OF THE ELEMENTS WILL BE INSIDE OF AN OBJECT NOT INTO A NEW ARRAY
+
+const { sat, ...weekDays } = restaurant.openingHours;
+
+console.log(weekDays);
+
+// =========================================> 2) FUNCTIONS: somar todos os argumentos independente do numero de argumentos passados para a função
+// the rest syntax will take all multiple numbers and packs them all into one array
+const add = function (...numbers) {
+  let sum = 0; // is going to be accumulating;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i]; // we go in this loop as long as the counter i is bellow the length of the array
+  // we add the current number to the sum
+  console.log(sum);
+};
+
+add(2, 3); // numbers is an array because the function will take my arguments an turn it into an array the rest syntax
+add(1, 4, 8, 9);
+add(7, 5, 9, 7, 4, 1);
+
+const x = [23, 5, 7];
+add(...x); //here we use the spread operator to unpack the numbers from the array
+
+orderPizza: function (mainIngredient, ...otherIngredient) {
+    `Here is your delicious pasta with ${mainIngredient} and with extra ${otherIngredient}`;
+    console.log(
+      `Here is your delicious pasta with ${mainIngredient} and with extra ${otherIngredient}`
+    );
+
