@@ -1,0 +1,93 @@
+
+
+-------> DESTRUCTURING OBJECTS: 
+
+- We use the curly braces to destructure - because this is also how we create objects 
+
+- Then all we have to do is to provide the variable names that exactly matches the property names that we want to retrieve from the object 
+
+///// OBJECT DESTRUCTURING:
+// Since in an object the order of elements does not matter - WE DON'T NEED TO MANUALLY SKIP ELEMENTS LIKE WE DO WITH ARRAYS
+
+const { name, openingHours, categories } = restaurant; // this will crate three new variables based on this restaurant object
+
+console.log(name, openingHours, categories);
+
+// But what if we wanted the variable names to be different from the property names?
+
+// like this - but we still need to reference the property names like before, otherwise JS has no way ok knowing what we actually want
+
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+
+console.log(restaurantName, hours, tags);
+
+// It can be useful to have default values for the case that we're trying to read a property that does not exist on the object
+
+// THE DEFAULT VALUE WILL BE AN EMPTY ARRAY
+
+const { menu = [], starterMenu: starters = [] } = restaurant;
+
+console.log(menu, starters);
+
+// THE DEFAULT VALUE WILL NOT BE APPLIED TO THE PROPERTIES THAT EXIST
+
+// MUTATING VARIABLES WHILE DESTRUCTURING OBJECTS:
+
+// I need to have the variables I want to mutate declared first
+let a = 111;
+let b = 999;
+
+const obj = {
+  a: 23,
+  b: 7,
+  c: 14,
+};
+
+({ a, b } = obj); // I need to wrap the curly braces with parenthesis
+console.log(a, b);
+
+// NESTED OBJECTS: for ex openingHours - friday is an object inside of an object
+
+const { fri } = openingHours;
+const { sat } = openingHours;
+console.log(fri);
+console.log(sat);
+
+// but we want it to create too variables open and close:
+
+const {
+  fri: { open: o, close: c },
+} = openingHours; // colon and the exact property name of the inner object
+console.log(o, c);
+
+
+
+// Many times in JS we have functions with a lot of parameters - but then it can be hard to know the order of parameters for someone who is using this function
+
+// And so instead of defining  the parameters manually, WE CAN JUST PASS AN OBJECT INTO THE FUNCTION AS AN ARGUMENT AND THE FUNCTION WILL IMMEDIATLY DESTRUCTURE THAT OBJECT
+
+
+ orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+    // WE COULD ALSO PUT DEFAULT VALUES HERE EX startIndex = 1, mainIndex = 0
+    console.log(
+      `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+
+// calling the function and passing it an object of options
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+// WE ONLY PASSED ONE OBJECT INTO THIS FUNCTION -> WE DID NOT PASS 4 ARGUMENTS - IT'S REALLY JUST ONE ARGUMENT, ONE OBJECT - AS SOON AS WE RECIEVE THE OBJECT WE TO IMMEDIATELY DESTRUCTURING
+// THAT'S WHY ({ starterIndex, mainIndex, time, address }) - NEED TO BE EXACTLY THE NAMES THAT WE HAVE DOWN HERE
+
+//THE PROPERTIES IN THE INDEX DO NOT HAVE TO MATCH THE ORDER IN WHICH WE DO DESTRUCTURING IN THE METHOD'S ARGUMENT
