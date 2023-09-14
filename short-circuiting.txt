@@ -1,0 +1,66 @@
+
+
+===========> SHORT CIRCUITING && AND ||
+
+|| = OR 
+
+---------> SHORT CIRCUITING
+
+// && AND || (OR) - The result of || opperator doesn't have to be a boolean
+
+// 3 PROPERTIES ABOUT LOGICAL OPERATORS: A) They can use any data type, B) They can return any data type, C) They do something called short circuting
+// short circuiting or short circuting evaluation
+
+// SHORT CIRCUTING: For the || it means that if the first value is a truthy value it will immediately return that first value - the other value wont' even be evaluated
+
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0); // 0 FALSY VALUE
+console.log(undefined || null); // UNDEFINED IS A FALSY VALUE - NULL IS ALSO A FALSY VALUE
+
+// checking if the object restaurant has a property called numGuests, if not set a default value
+// if it does not exists it will be undefined so therefore 10 will be the default value
+
+//restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+// if we already have this property with a value, it will return, in this case 23
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+// BUT ANY OF THESES SOLUTIONS WILL WORK IF THE NUMBER OF GUESTS IS ZERO
+
+// SHORT CIRCUiTING IS A BETTER WAY TO SET DEFAULT VALUES
+
+// In the or operation the result is true if AT LEAST ONE operand is true
+
+//                                             ------------------- THE AND OPERATOR &&:
+
+// When it comes to short circuit evaluation - THE AND OPERATOR WORKS IN THE EXACT OPPOSITE WAY OF THE OR OPERATOR
+
+console.log(0 && 'Jonas'); // = 0
+console.log(7 && 'Jonas'); // IF IT IS TRUTHY THE EVELUATION CONTINUES AND THE LAST VALUE WILL BE RETURNED
+console.log(7 && null && 'Jonas');
+console.log('Hello' && 23 && null && 'Jonas');
+// the and operator is only true if all operands (values) are true - so if the first value is false IT MEANS THAT THE ENTIRE RESULT OF THE AND OPERATION WILL ALREADY BE FALSE ANYWAY
+
+// IT MEANS THAT THE AND OPERATOR SHORT CIRCUITS WHEN THE FIRST VALUE IS FALSY!!!!!!!!!
+
+//if (restaurant.orderPizza) {
+//restaurant.orderPizza('cheese', 'broccoli');
+//}
+
+// WE COULD AVOID THE IF STATEMENT WHERE ALL WE WANT TO DO IS TO CHECK IF A CERTAIN PROPERTY OR VALUE ACTUALLY EXISTS
+
+// WE COULD DO THE SAME THING WITH THE && OPERATOR:
+
+restaurant.orderPizza && restaurant.orderPizza('cheese');
+
+
+// SO IF THE PROPERTY EXISTS WE CALL THE FUNCTION
+
+// ALL IN ALL =====> THE OR OPERATOR WILL RETURN THE FIRST TRUTHY VALUE OFF ALL THE OPERANDS OR SIMPLY THE LAST VALUE IF ALL OF THEM ARE FALSY
+                    // THE AND OPERATOR WILL RETURN THE FIRST FALSY VALUE OFF ALL THE OPERANDS OR SIMPLY THE LAST VALUE IF ALL OF THEM ARE TRUTHY
+
+/*

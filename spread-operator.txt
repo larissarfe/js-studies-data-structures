@@ -1,0 +1,40 @@
+
+
+-------> THE SPREAD OPERATOR 
+
+We can use the spread operator to BASICALLY EXPAND AN ARRAY INTO ALL ITS ELEMENTS 
+
+SO BASICALLY UNPACKING ALL THE ARRAY ELEMENTS AT ONE 
+
+WHAT THE SPREAD OPERATOR DOES IS TAKE ALL THE ELEMENTS OUT OF THE ARRAY AND THEN WRITE THEM INDIVIDUALLY AS IF WE WROTE MANUALLY 
+
+// we want to create a new array based on this one - but with some new elements at the beginning:
+
+const arr = [7, 8, 9];
+
+// doing manually:
+
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+
+console.log(badNewArr);
+// But now since ES6 we can do it in a much better way: using the spread operator ...
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+So we use the spread operator whenever we would otherwise write multiple values separated by commas - LIKE AN ARRAY 
+
+THE SECOND SITUATION IS WHEN WE PASS ARGUMENTS INTO FUNCTIONS 
+
+---- THE SPREAD OPERATOR IS SIMILAR TO DESTRUCTURING 
+     
+     THE BIG DIFFERENCE IS THAT THE SPREAD OPERATOR TAKES ALL THE ELEMENTS FROM THE ARRAY AND IT ALSO DOESN'T CREATE NEW VARIABLES 
+
+     -- AS A CONSEQUENCE WE CAN ONLY USE IT IN PLACES WHERE WE WOULD OTHERWISE WRITE VALUES SEPARATED BY COMMAS 
+
+================> WE CAN USE THE SPREAD OPERATOR NOT ONLY IN ARRAYS BUT IT WORKS ON ALL SO-CALLED ITERABLES 
+
+    WHAT IS AN ITERABLE? THERE ARE DIFFERENT ITERABLES IN JS - ITERABLES ARE THINGS LIKE ALL ARRAYS, STRINGS, MAPS, OR SETS - BUT NOT OBJECTS!!!!!!
+
+
+------> EVER SINCE 2018 THE SPREAD OPERATOR ALSO WORKS FOR OBJECTS EVEN THOUGH THEY'RE NOT ITERABLE
