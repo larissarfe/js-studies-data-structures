@@ -1,0 +1,22 @@
+
+==============================> THE NULLISH COASLESCING OPERATOR: 
+
+
+- Operator introduced in ES2020
+
+- The nullish coaslescing operator works with the idea of nullish values instead of falsy values 
+
+- AND NULLISH VALUES ARE NULL AND UNDEFINED, IT DOES NOT INCLUDE ZERO OR AN EMPTY
+STRING
+
+- FOR THE NULLINSH COASLESCING OPERATOR 0 OR '' ARE NOT FALSY VALUES AND WERE INSTEAD TRUTHY VALUES AS WELL 
+
+- SO ONLY NULLISH VALUES WILL SHORT CIRCUIT THE EVALUATION HERE - So only if restaurant.numGuests was null or undefined - ONLY THEN THE SECOND OPERAND WOULD BE EXECUTED AND RETURNED 
+
+
+restaurant.numGuests = 0;
+const guest = restaurant.numGuests || 10;
+console.log(guest);
+
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
