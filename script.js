@@ -53,6 +53,62 @@ const restaurant = {
   },
 };
 
+// ---> Logical ASSIGNMENT OPERATOR:
+
+const rest1 = {
+  name: 'Capri',
+  //numGuests: 20,
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Gioovanni Rossi',
+};
+
+//  set a default number of guests for all the restaurant objects that do not have that property
+// doing it with the  || operator: in the or operator if the first value is truthy it will immediately return it
+
+//rest1.numGuests = rest1.numGuests || 10;
+//rest2.numGuests = rest2.numGuests || 10;
+
+// =================================> THE OR ASSIGNMENT OPERATOR
+
+// Writing the same thing with the || assignment operator
+
+//rest1.numGuests ||= 10;
+//rest2.numGuests ||= 10;
+
+// THIS OPERATOR BASICALLY ASSIGNS A VALUE TO A VARIABLE IF THAT VARIABLE IS CURRENTLY FALSY
+
+// so if we set the number of guests to zero it is a falsy value so the or operator will assign the value of 10
+
+// SO WHAT IF WE DO NOT WANT ANOTHER VALUE TO BE ASSIGNED TO OUR VARIABLE? SO WE USE THE NULLISH OPERATOR (null or undefined)
+
+rest1.numGuests ??= 10;
+rest2.numbGuests ??= 10;
+
+console.log(rest1);
+console.log(rest2);
+
+// NOW WHENEVER THE RESTAURANT HAS A OWNER, WE WANT TO REPLACE IT WITH ANONYMOUS
+
+//rest2.owner = rest2.owner && '<ANONYMOUS>'; // THE && OPERATOR SHORT CURCUTS WHEN THE FIRST VALUE IS FALSY AND THEN IMMEDIATELY RETURNS THAT FALSY VALUE
+// SO IF IT'S TRUTHY THE SECOND VALUE WILL BE EVALUATED AND RETURNED
+
+//rest1.owner = rest1.owner && '<ANONYMOUS>';
+
+rest1.owner &&= '<ANONYMOUS>'; // now it doesn't show undefined anymore
+rest2.owner &&= '<ANONYMOUS>';
+
+// WHAT THE && ASSIGNMENT OPERATOR DOES IS TO ASSIGN A VALUE TO A VARIABLE IF IT IS CURRENTLY TRUTHY
+// IF WE NEED TO ASSIGN A VALUE TO A VARIABLE THAT IS ALREADY DEFINED WE CAN USE THIS && ASSIGNMENT OPERATOR
+console.log(rest2);
+console.log(rest1);
+
+/*
+
+                    // ===================> NULLISH OPERATOR 
 restaurant.numGuests = 0;
 const guest = restaurant.numGuests || 10;
 console.log(guest);
