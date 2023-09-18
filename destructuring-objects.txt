@@ -57,7 +57,7 @@ const { sat } = openingHours;
 console.log(fri);
 console.log(sat);
 
-// but we want it to create too variables open and close:
+// but we want it to create two variables open and close:
 
 const {
   fri: { open: o, close: c },
