@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -51,7 +51,115 @@ const restaurant = {
     );
     //console.log(otherIngredient);
   },
+};*/
+
+// -------------------------------------- CODING CHALLENGE
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+
+  printGoals: function (...players) {
+    console.log(...players);
+    console.log(`${players.length} goals were scored`);
+  },
 };
+
+game.printGoals('Davis', 'Miller', 'Lewandowski', 'Kimmich');
+game.printGoals('Davis', 'Miller');
+game.printGoals(...game.scored);
+// 1- Create one player array for each team (variables 'players1' and 'players2'):
+
+const [players1, []] = game.players;
+console.log(players1);
+
+const [, players2] = game.players;
+
+console.log(players2);
+
+// 2- The first player in any player array is the goalkeeper and the others are field players.
+// For bayern munich (team 1) create one variable ('gk') with the goalkeeper's name, and one array ('fieldPlayers') for field players with all the remaining 10 field players
+
+const gkTeam1 = players1[0];
+console.log(gkTeam1);
+
+const [a, ...fieldPlayers1] = players1;
+
+console.log(fieldPlayers1);
+
+const gkTeam2 = players2[0];
+console.log(gkTeam2);
+const [b, ...fieldPlayers2] = players2;
+
+console.log(fieldPlayers2);
+
+// 3- create an array 'allPlayers' containing all players of both teams (22 players)
+
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+
+// 4- during the game, team1  used 3 substitute players. So create a new array ('playersFinal') containing all the original team1 players plus 'Thiago', 'Coutinho', 'Perisic'
+
+const playersFinal = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+
+console.log(playersFinal);
+
+// 5- based on the game.odds object, create one variable for each odd (called 'team1', 'draw', 'team2')
+
+const { team1, x: draw, team2 } = game.odds;
+
+console.log(team1, draw, team2);
+
+// 6- write a function ('printGoals') that receives an arbitrary number of player names (NOT AN ARRAY) and print each of them in the console
+// along with the number of goals who were scored (number of player names passed in)
+
+// 7- Print to the console which team is more likely to win based on the odds variable WITHOUT if/else statement or ternary operator
+// the team with a lowe odd is more likely to win
+
+// the and operator
+team1 < team2 && console.log('Team 1 is more likely to win');
+team1 > team2 && console.log('Team 2 is more likely to win');
+
+// we want the evaluation console.log to be printed if the result of the operation before is true
+
+// the or operator short circuits if the first value is true but that's not what we want because if so the cl won't be evaluated
+
+/*
 
 // ---> Logical ASSIGNMENT OPERATOR:
 
@@ -147,7 +255,7 @@ console.log(undefined || null); // UNDEFINED IS A FALSY VALUE - NULL IS ALSO A F
 
 // In the or operation the result is true if AT LEAST ONE operand is true
 
-//                                             ------------------- THE AND OPERATOR &&:
+//                    ------------------- THE AND OPERATOR &&:
 
 // When it comes to short circuit evaluation - THE AND OPERATOR WORKS IN THE EXACT OPPOSITE WAY OF THE OR OPERATOR
 
