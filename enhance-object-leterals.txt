@@ -1,0 +1,106 @@
+
+====================> ENHANCE OBJECT LITERALS 
+
+-------> ES6 FEATURE  
+
+The entire restaurant objet in an object literal because we wrote it with {} syntax - wrote it literraly using {}
+
+ES6 introduced 3 ways, which make it easier to write object literals like this 
+
+- Let's pretend that we have the object openingHours outside of the object restaurant 
+- But we still want to put it inside of  restaurant object:
+
+         - BEFORE ES6 WE WOULD WRITE THIS openingHours(property name): openingHours(setting it to the object); 
+
+
+1- 
+const openingHours = {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  };
+
+
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  openingHours : openingHours // before ES6
+  with ES6 enhenced object literal we just need to write
+  openingHours and it will take the openingHours and create a new property with the variable's name. IF WE CHANGE THE VARIABLES NAME WE NEED TO ALSE CHANGE IT HERE INSIDE THE OBJECT
+
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+
+  orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+    // WE COULD ALSO PUT DEFAULT VALUES HERE EX startIndex = 1, mainIndex = 0
+    console.log(
+      `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+
+  orderPizza: function (mainIngredient, ...otherIngredient) {
+    `Here is your delicious pizza with ${mainIngredient} and with extra ${otherIngredient}`;
+    console.log(
+      `Here is your delicious pizza with ${mainIngredient} and with extra ${otherIngredient}`
+    );
+    //console.log(otherIngredient);
+  },
+};
+
+2- THE SECOND ENHANCEMENT IS ABOUT WRITING METHODS: 
+
+essentially we create a property just like we do all to all the properties and then we set that to a function expression 
+
+BUT NOW WE NO LONGER NEED TO DO THAT - WE CAN DO IT IN AN EASIER WAY - WE CAN GET RID OFF THE FUNCTION AN OFF THE SEMI COLON 
+
+- LIKE THIS: 
+
+order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+
+THIS NOW WORKS EXACTLY THE SAME AS BEFORE BUT WITH A SLIGHTLY EASIER SYNTAX 
+
+
+3- THE THIRD ENHANCEMENT IS THAT WE CAN NOW ACTUALLY COMPUTE PROPERTY NAMES INSTEAD OF HAVING TO WRITE THEM OUT MANUALLY AND LITERALLY 
+AND COMPUTE MEANS CALCULATE 
+
+
+const weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']; 
+
+openingHours: {
+    [weekDays[3]]: {
+      open: 12,
+      close: 22,
+    },
+    [`day-${2+2}`]: { HERE WE ARE USING COMPUTATION 
+      open: 11,
+      close: 23,
+    },
+    [weekDays[5]]: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
