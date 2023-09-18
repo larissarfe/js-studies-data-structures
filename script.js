@@ -1,5 +1,5 @@
 'use strict';
-/*
+
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -51,8 +51,29 @@ const restaurant = {
     );
     //console.log(otherIngredient);
   },
-};*/
+};
 
+// the for of loop  -> loop over our entire menu
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item); // all the items will be logged individually in the console
+
+// so this loop will automatically loop over the intire array and in each iteration it will give us access to the current array element
+// which we specify with the variable item - the item variable is always the current element in each iteration
+
+// WE CAN ALSO USE THE KEYWORD CONTINUE AND BREAK HERE
+// just like an if/else statement we don't need a code block when we only have one statement to execute
+
+// What if we want also the current index and not just the current element?
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+//BUT WE CAN DESTRUCTURE IT -> const [i, el]
+
+console.log(menu.entries());
+/*
 // -------------------------------------- CODING CHALLENGE
 const game = {
   team1: 'Bayern Munich',
@@ -292,7 +313,7 @@ restaurant.orderPizza && restaurant.orderPizza('cheese');
 
 // WE KNOW WE ARE USING AN SPREAD OPERATOR BECAUSE WE ARE USING IT ON THE RIGHT HAND SIGHT OF THE = SIGN
 
-// spread before the =
+// spread after the =
 
 // THE REST PATTERN CAN BE USED WHERE WE WOULD WRITE VARIABLE NAMES SEPARATED BY COMMAS AND NOT VALUES SEPARATED BY COMMAS
 

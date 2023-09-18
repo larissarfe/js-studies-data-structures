@@ -1,0 +1,27 @@
+
+-----> NEW WAY OF LOOPING OVER ARRAYS - INTRODUCED BY ES6 
+
+
+THE FOR OF LOOP 
+
+// the for of loop  -> loop over our entire menu
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item); // all the items will be logged individually in the console
+
+// so this loop will automatically loop over the intire array and in each iteration it will give us access to the current array element
+// which we specify with the variable item - the item variable is always the current element in each iteration
+
+// WE CAN ALSO USE THE KEYWORD CONTINUE AND BREAK HERE
+// just like an if/else statement we don't need a code block when we only have one statement to execute
+
+// What if we want also the current index and not just the current element?
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+//BUT WE CAN DESTRUCTURE IT -> const [i, el]
+
+console.log(menu.entries());
+
