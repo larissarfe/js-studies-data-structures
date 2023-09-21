@@ -6,6 +6,8 @@ const flights =
 
 // Data needed for first part of the section
 
+const weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -18,11 +20,11 @@ const restaurant = {
       open: 12,
       close: 22,
     },
-    fri: {
+    [weekDays[4]]: {
       open: 11,
       close: 23,
     },
-    sat: {
+    [weekDays[5]]: {
       open: 0, // Open 24 hours
       close: 24,
     },
@@ -54,7 +56,108 @@ const restaurant = {
   },
 };
 
-// the for of loop  -> loop over our entire menu
+//=================================> LOOPING OBJECTS : OBJECT KEYS, VALUES AND ENTRIES:
+
+// Objects are not iterables but we can loop over them in an indirect way:
+
+// -> Let's start by simply looping over property names - THEY'RE ALSO CALLED KEYS
+
+// Ultimately we will still have to use the for of loop to loop over the array but we're going to do that in an indirect way
+
+// SO WE'RE NOT ACTUALLY LOOPING OVER THE OBJECT ITSELF - INSTEAD, WE'RE GONNA LOOP OVER AN ARRAY
+
+//onst days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+// we can use this to compute how many properties are in the object
+// print a string to say how many days the restaurant is open:
+
+// PROPERTY NAMES
+const properties = Object.keys(restaurant.openingHours);
+console.log(properties);
+
+let openStr = `The restaurant is open ${properties.length} days: `;
+
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+
+console.log(openStr);
+
+// PROPERTY VALUES
+
+const values = Object.values(restaurant.openingHours);
+console.log(values);
+
+// TO LOOP OVER THE ENTIRE OBJECT WE ACTUALLY NEED ENTRIES
+
+// ENTRIES = NAMES PLUS THE VALUES TOGETHER -
+// --------------------------------------------- LOOPING OVER THE ENTIRE OBJECT
+
+const entries = Object.entries(restaurant.openingHours);
+
+console.log(entries);
+
+// using the entries to loop over the object:
+
+// the two variable names inside of that object are open and close - here we specified these property names - so they get desftructured
+// { open, close } WAS NECESSARY BECAUSE THE VALUE ITSELF IS ALSO AN OBJECT - IF IT WAS A SIMPLER OBJECT: [KEY, VALUE]
+for (const [key, { open, close }] of entries) {
+  // where would be the values we put open, close
+  console.log(`On ${key} we open at ${open} and close at ${close} `); // USING VARIABLES BEFORE WE DEFINE THEM (key, open, close) BUT HOW? USING DESTRUCTURING
+}
+
+/*
+//-------------------- OPTIMAL CHAINING
+
+// 1. TO CHECK IF A PROPERTY EXISTS
+
+// so let's say that we wanted to get the openingHours of our restaurant for monday
+
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.fri.open);
+
+// Now with optimal chaining:
+console.log(restaurant.openingHours.mon?.open); // ONLY IF THE PROPERTY THAT IS BEFORE THE QUESTION MARK - SO ONLY IF MONDAY EXISTS
+// ONLY IF MONDAY EXISTS THIS OPEN PROPERTY WILL BE READ FROM THERE
+
+// A PROPERTY EXISTS IF IT'S NOT NULL OR UNDEFINED
+// IF IT'S ZERO OR AN EMPTY STRING IT STILL EXISTS
+
+// IF NOT, THEN UNDEFINED WILL BE IMMEDIATELY RETURNED
+
+// We can have multiple optimal chainings
+
+// Example - loop over this array then lock to the console whether the restaurant is open or closed on each of the days
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+// obs: if we want to use a variable name as the property name we need to use [day]
+
+// the days that we get undefined because th restaurant does not open we want to SET A DEFAULT VALUE - we use the nullish operator so it will not trigger an error on saturday because it openas at 0
+// because for the nullish operator nullish values are null and undefined
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed'; // the day is coming dynamically from this array
+  // this would be the same as restaurant.openingHours.mon/tue/wed
+  console.log(`On ${day}, we open at ${open} `); // we used the open variable that we created not the property
+}
+
+// 2- FOR CALLING METHODS: WE CAN CHECK IF A METHOD EXISTS BEFORE WE CALL IT:::
+
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist'); // IF THE METHOD EXISTS WE CAN CALL IT
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
+
+// 3- OPTIONAL CHAINING EVEN WORKS ON ARRAYS: we can use it if an array is empty
+
+// users array so we can put user's objects:
+
+const users = [{ name: 'jonas', email: 'hello.jonas@jonas.io' }];
+
+// now to get the name of the first element of this array:- IT CHECKS IF THE ELEMENT ON THE LEFT EXISTS SO users[0]
+
+console.log(users[0]?.name ?? 'User array empty'); // check if the first element of the array exists and only then take its .name
+
+
+// -------------------------------------the for of loop  -> loop over our entire menu
 
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
@@ -73,8 +176,8 @@ for (const [i, el] of menu.entries()) {
 
 //BUT WE CAN DESTRUCTURE IT -> const [i, el]
 
-console.log(menu.entries());
-/*
+console.log(menu.entries()); */
+
 // -------------------------------------- CODING CHALLENGE
 const game = {
   team1: 'Bayern Munich',
@@ -181,8 +284,9 @@ team1 > team2 && console.log('Team 2 is more likely to win');
 
 // the or operator short circuits if the first value is true but that's not what we want because if so the cl won't be evaluated
 
-/*
+// ============================================================= > CODING CHALLENGE 2
 
+/*
 // ---> Logical ASSIGNMENT OPERATOR:
 
 const rest1 = {
@@ -236,9 +340,7 @@ rest2.owner &&= '<ANONYMOUS>';
 console.log(rest2);
 console.log(rest1);
 
-/*
-
-                    // ===================> NULLISH OPERATOR 
+// ===================> NULLISH OPERATOR
 restaurant.numGuests = 0;
 const guest = restaurant.numGuests || 10;
 console.log(guest);
@@ -304,8 +406,6 @@ restaurant.orderPizza && restaurant.orderPizza('cheese');
 // ALL IN ALL =====> THE OR OPERATOR WILL RETURN THE FIRST TRUTHY VALUE OFF ALL THE OPERANDS OR SIMPLY THE LAST VALUE IF ALL OF THEM ARE FALSY
 // THE AND OPERATOR WILL RETURN THE FIRST FALSY VALUE OFF ALL THE OPERANDS OR SIMPLY THE LAST VALUE IF ALL OF THEM ARE TRUTHY
 
-/*
-
 // ==============================> THE REST PATTERN
 
 // uses the exact same syntax - HOWEVER, TO COLLECT MULTIPLE ELEMENTS AND CONDENSE THEM INTO AN ARRAY
@@ -362,9 +462,6 @@ const x = [23, 5, 7];
 add(...x); //here we use the spread operator to unpack the numbers from the array
 
 restaurant.orderPizza('cheese', 'bacon', 'pineapple', 'mayo');
-
-
-/*
 
 //================================> SPREAD OPERATOR
 
@@ -424,19 +521,18 @@ console.log(restaurantCopy.name);
 
 // each element will be defined by a prompt window:
 
-/*const ingredients = [
+const ingredients = [
   prompt("Let's make pasta! Ingredient 1? "),
   prompt('Ingredient 2?'),
   prompt('Ingredient 3?'),
-]; 
+];
 
 console.log(ingredients);
 
 restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
 
-restaurant.orderPasta(...ingredients); */
+restaurant.orderPasta(...ingredients);
 
-/*
 // calling the function and passing it an object of options
 restaurant.orderDelivery({
   time: '22:30',
@@ -512,7 +608,6 @@ console.log(o, c);
 
 // And so instead of defining  the parameters manually, WE CAN JUST PASS AN OBJECT INTO THE FUNCTION AS AN ARGUMENT AND THE FUNCTION WILL IMMEDIATLY DESTRUCTURE THAT OBJECT
 
-/*
 // if we wanted to retrieve each one into its own variables without destructuring:
 
 const array = [2, 3, 4];
