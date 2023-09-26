@@ -99,7 +99,7 @@ console.log(entries);
 
 // using the entries to loop over the object:
 
-// the two variable names inside of that object are open and close - here we specified these property names - so they get desftructured
+// the two variable names inside of that object are open and close - here we specified these property names - so they get destructured
 // { open, close } WAS NECESSARY BECAUSE THE VALUE ITSELF IS ALSO AN OBJECT - IF IT WAS A SIMPLER OBJECT: [KEY, VALUE]
 for (const [key, { open, close }] of entries) {
   // where would be the values we put open, close
@@ -266,9 +266,9 @@ console.log(playersFinal);
 
 // 5- based on the game.odds object, create one variable for each odd (called 'team1', 'draw', 'team2')
 
-const { team1, x: draw, team2 } = game.odds;
+//const { team1, x: draw, team2 } = game.odds;
 
-console.log(team1, draw, team2);
+//console.log(team1, draw, team2);
 
 // 6- write a function ('printGoals') that receives an arbitrary number of player names (NOT AN ARRAY) and print each of them in the console
 // along with the number of goals who were scored (number of player names passed in)
@@ -277,14 +277,54 @@ console.log(team1, draw, team2);
 // the team with a lowe odd is more likely to win
 
 // the and operator
-team1 < team2 && console.log('Team 1 is more likely to win');
-team1 > team2 && console.log('Team 2 is more likely to win');
+//team1 < team2 && console.log('Team 1 is more likely to win');
+//team1 > team2 && console.log('Team 2 is more likely to win');
 
 // we want the evaluation console.log to be printed if the result of the operation before is true
 
 // the or operator short circuits if the first value is true but that's not what we want because if so the cl won't be evaluated
 
 // ============================================================= > CODING CHALLENGE 2
+
+// 1. Loop over the game.scored array and print each player name to the console, along with the goal number, along with the goal number (ex "Goal 1: Lewandowski")
+
+const arr = game.scored;
+
+console.log(arr);
+console.log(arr.entries()); // entries gives the indexes
+
+for (const [i, el] of arr.entries()) {
+  console.log(` Goal ${i + 1} scored by: ${el}!!`);
+}
+
+// 2. Use a loop to calculate the average odd and log it to the console
+// loop over the object
+
+const value = Object.values(game.odds);
+console.log(value);
+
+//const sum = value[0] + value[1] + value[2];
+//console.log(sum / 2);
+
+let sum = 0;
+for (let i = 0; i < value.length; i++) {
+  sum += value[i];
+}
+
+console.log(sum / value.length);
+
+// 3. Print the 3 odds to the console, but in a nice formatted way: odd of victory Bayern Munich: 1.33), odd of draw: 3.25... get the team names directly from the game object,
+
+const names = [game.team1, 'Draw', game.team2];
+
+console.log(names);
+const odds = Object.entries(game.odds);
+console.log(odds);
+
+for (const [team, value] of odds) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`; // it will read the property with the same name from the game object
+  console.log(`odd of victory ${teamStr}: ${value}`);
+}
 
 /*
 // ---> Logical ASSIGNMENT OPERATOR:
