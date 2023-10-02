@@ -56,6 +56,181 @@ const restaurant = {
   },
 };
 
+// -------------------------------------------> MAPS : FUNDAMENTALS
+
+// new feature
+
+// more useful than sets
+
+// IN JS - MAP IS A DATA STRUCTURE THAT WE CAN USE TO MAP VALUES TO KEYS
+
+// SO JUST LIKE IN OBJECTS - DATA IS STORES IN KEY VALUE PAIRS IN MAPS
+
+// ---------->>>>> THE BIG DIFFERENCE BETWEEN OBJECTS AND MAPS IS THAT IN MAPS THE KEYS CAN HAVE ANY TYPE!!!!!!!!
+
+// THE EASIEST WAY TO CREATE A MAP IS TO CREATE AN EMPTY MAP:
+
+const rest = new Map();
+
+// then to fill up the map we can use the set method
+
+rest.set('name', 'Classico Italiano'); // here we pass it into arguments - THE FIRST IS THE KEY NAME - THE SET METHOD IS SIMILAR TO THE ADD METHOD IN SETS (DATA TYPE)
+rest.set(1, 'Firenze, Italy');
+rest.set(2, 'Lisbon, Portugal');
+
+// THE SET METHOD ALSO RETURNS THE MAP
+
+console.log(rest.set(3, 'Campos, Brazil'));
+
+// THE FACT THAT THE SET METHOD ACTUALLY RETURNS THE UPDATED MAP ALLOWS US TO CHANGE THE SET METHOD LIKE THIS: CHAIN THE SET METHOD:
+
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'we are open')
+  .set(false, 'we are closed');
+
+// IN ORDER TO READ DATA FROM THE MAP WE USE THE GET METHOD - THE GET METHOD IS AVAILABLE ON ALL MAPS
+console.log(rest.get('name'));
+console.log(rest.get(true));
+
+const time = 21;
+
+console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // HAVING BOOLEANS AS MAP KEYS
+
+// ---------------------------->  OTHER METHODS BESIDES GET ANS SET TO USE WITH MAPS:
+
+// 3- CHECK IF A MAP CONTAINS A CERTAIN KEY:
+
+console.log(rest.has('categories'));
+
+// DELETING ITENS - WE SPECIFY WITH THE KEY
+
+rest.delete(2); // location 2
+
+// WE CAN ALSO DELETE PROPERTIES FROM OBJECTS USING SOMETHING CALLED DELETE OPERATOR
+
+// OBJECTS HAVE A METHOD CALLED hasOwnProperty
+
+// MAPS ALSO HAVE THE SIZE PROPERTY
+
+console.log(rest);
+console.log(rest.size);
+
+// REMOVE ALL THE ELEMENTS FROM THE MAP
+
+// rest.clear();
+
+// WE CAN USE ARRAYS OR OBJECTS AS MAP KEYS
+
+const array = [1, 2];
+rest.set(array, 'Test'); // BEFORE IT WASN'T IN A VARIABLE
+rest.set(document.querySelector('h1'), 'Heading'); // -------- > THE RESULT OF THIS WILL BE AN OBJECT
+
+console.log(rest);
+
+// BUT NOW TO GET THE DATA FROM THIS ARRAY
+
+console.log(rest.get(array)); // IT'S NOT GOING TO WORK BECAUSE ITS NOT A PRIMITIVE VALUE - IT DOES NOT REFER TO THE SAME PLACE IN MEMORY
+
+// TO MAKE IT WORK WE NEED TO STORE THE ARRAY IN A VARIABLE
+
+// const array = [1, 2];
+
+// SO WE CAN USE OBJECTS AS MAP KEYS - SO WE CAN USE IT WITH DOM ELEMENTS
+
+// ----------------------------------- > SETS
+
+// A SET IS BASICALLY JUST A COLLECTION OF UNIQUE VALUES:
+
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]); // write new Set and we pass in an iterable. the most common is an array - THERE ARE NO KEY VALUE PAIRS
+
+// SET CAN HOLD MIXED DATA TYPES
+console.log(ordersSet); // ALL THE DUPLICATES ARE GONE
+
+// JUST LIKE ARRAYS, SETS ARE ALSO ITERABLES
+
+// A SET IS STILL VERY DIFFERENT FROM AN ARRAY: 1- ITS ELEMENTS ARE UNIQUE, 2- BECAUSE OF THE ORDER OF ELEMENTS IN THE SET IS IRRELEVANT
+
+// Obs: strings are also iterables
+
+console.log(new Set('Jonas'));
+console.log(new Set()); // empty set
+
+// 1 - we can get the size of a set:
+
+console.log(ordersSet.size);
+
+// 2 - we can check if a certain element is in a set:
+
+console.log(ordersSet.has('Pasta'));
+
+// 3- ADDING ITEMS TO THE SET
+
+ordersSet.add('Garlic Bread');
+
+console.log(ordersSet.size);
+
+// 4- DELETE AN ITEM FROM THE SET
+ordersSet.delete('Pizza');
+console.log(ordersSet.size);
+
+// 5- HOW DO WE RETRIEVE VALUES OUT OF A SET? CAN WE USE INDEX? NOOOOOO
+
+// IN SETS THERE ARE NO INDEXES -> THERE'S NO WAY OF GETTING OUT OF A SET - AND THERE'S NO NEED OF THAT BECAUSE ALL VALUES ARE UNIQUE
+
+// ALL WE NEED TO KNOW IS WHETHER A CERTAIN VALUE IS IN A SET OR NOT - HAS METHOD
+
+// If your goal is to store values in order and retrieve it
+
+// 6 - DELETE ALL OF THE ELEMENTS OS A SET:
+
+//ordersSet.clear()
+
+// SETS ARE ALSO ITERABLES AND THEREFORE WE CAN LOOP OVER THEM - we can loop over any iterable
+
+for (const order of ordersSet) {
+  console.log(order);
+}
+
+// ---------------------------------- USE CASE FOR SETS::
+
+// THE MAIN USE FOR SETS IS TO REMOVE DUPLICATE VALUES FROM ARRAYS:
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+
+// to know only which different positionsthere are in our restaurant - AN UNIQUE ARRAY OF STAFF
+
+const staffUnique = [...new Set(staff)]; // CREATE AN ARRAY AROUND THIS AND UNPACK IT  // WE PASS THE ITERABLE IN
+
+console.log(staffUnique);
+
+// NOW WE WANT THE staffUnique TO BE AN ARRAY - TO CONVERT IT - THE CONVERSION IS EASY BECAUSE THEY'RE BOTH ITERABLES
+
+// THE SPREAD OPERATOR WORKS ON ALL ITERABLES
+
+// SO WE CAN USE THE SPREAD OPERATOR AND UNPACK THE ENTIRE SET USING THE SPREAD OPERATOR AND THEN THESE ELEMENTS WILL BE PUT INTO THE NEW ARRAY
+
+// ================== THE SPREAD OPERATOR TAKES ALL THE ELEMENTS OUT OF THE ITERABLE AND WILL WRTIE THEM INTO AN ARRAY
+
+// WE CAN ALSO DO IT LIKE THAT:
+
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('larissarodriguesferreira').size);
+
+// SETS ARE NOT INTENDED TO REPLACE ARRAYS AT ALL
+
 //=================================> LOOPING OBJECTS : OBJECT KEYS, VALUES AND ENTRIES:
 
 // Objects are not iterables but we can loop over them in an indirect way:
