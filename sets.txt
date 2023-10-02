@@ -1,0 +1,102 @@
+
+===================================> SETS 
+
+
+    Basically in JS we only had objects and arrays (build in data structures);
+
+    But in ES6, two more data structures were finally introduced AND THEY ARE SETS AND MAPS 
+
+    They already exist in other programming languages and now they also exist in JS 
+
+
+-> A SET IS BASICALLY JUST A COLLECTION OF UNIQUE VALUES 
+
+    - That means a set can never have any duplicates - and that property makes them useful 
+
+    const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]); // write new Set and we pass in an iterable. the most common is an array - THERE ARE NO KEY VALUE PAIRS
+
+// SET CAN HOLD MIXED DATA TYPES
+console.log(ordersSet); // ALL THE DUPLICATES ARE GONE
+
+// JUST LIKE ARRAYS, SETS ARE ALSO ITERABLES
+
+// A SET IS STILL VERY DIFFERENT FROM AN ARRAY: 1- ITS ELEMENTS ARE UNIQUE, 2- BECAUSE OF THE ORDER OF ELEMENTS IN THE SET IS IRRELEVANT
+
+// Obs: strings are also iterables
+
+console.log(new Set('Jonas'));
+console.log(new Set()); // empty set
+
+// 1 - we can get the size of a set:
+
+console.log(ordersSet.size);
+
+// 2 - we can check if a certain element is in a set:
+
+console.log(ordersSet.has('Pasta'));
+
+// 3- ADDING ITEMS TO THE SET
+
+ordersSet.add('Garlic Bread');
+
+console.log(ordersSet.size);
+
+// 4- DELETE AN ITEM FROM THE SET
+ordersSet.delete('Pizza');
+console.log(ordersSet.size);
+
+// 5- HOW DO WE RETRIEVE VALUES OUT OF A SET? CAN WE USE INDEX? NOOOOOO
+
+// IN SETS THERE ARE NO INDEXES -> THERE'S NO WAY OF GETTING OUT OF A SET - AND THERE'S NO NEED OF THAT BECAUSE ALL VALUES ARE UNIQUE
+
+// ALL WE NEED TO KNOW IS WHETHER A CERTAIN VALUE IS IN A SET OR NOT - HAS METHOD
+
+// If your goal is to store values in order and retrieve it
+
+// 6 - DELETE ALL OF THE ELEMENTS OS A SET:
+
+//ordersSet.clear()
+
+// SETS ARE ALSO ITERABLES AND THEREFORE WE CAN LOOP OVER THEM - we can loop over any iterable
+
+for (const order of ordersSet) {
+  console.log(order);
+}
+
+// ---------------------------------- USE CASE FOR SETS::
+
+// THE MAIN USE FOR SETS IS TO REMOVE DUPLICATE VALUES FROM ARRAYS:
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+
+// to know only which different positionsthere are in our restaurant - AN UNIQUE ARRAY OF STAFF
+
+const staffUnique = [...new Set(staff)]; // CREATE AN ARRAY AROUND THIS AND UNPACK IT  // WE PASS THE ITERABLE IN
+
+console.log(staffUnique);
+
+// NOW WE WANT THE staffUnique TO BE AN ARRAY - TO CONVERT IT - THE CONVERSION IS EASY BECAUSE THEY'RE BOTH ITERABLES
+
+// THE SPREAD OPERATOR WORKS ON ALL ITERABLES
+
+// SO WE CAN USE THE SPREAD OPERATOR AND UNPACK THE ENTIRE SET USING THE SPREAD OPERATOR AND THEN THESE ELEMENTS WILL BE PUT INTO THE NEW ARRAY
+
+// ================== THE SPREAD OPERATOR TAKES ALL THE ELEMENTS OUT OF THE ITERABLE AND WILL WRTIE THEM INTO AN ARRAY
+
+// WE CAN ALSO DO IT LIKE THAT:
+
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('larissarodriguesferreira').size);
+
+// SETS ARE NOT INTENDED TO REPLACE ARRAYS AT ALL 
+

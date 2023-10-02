@@ -1,0 +1,83 @@
+// -------------------------------------------> MAPS : FUNDAMENTALS
+
+// new feature
+
+// more useful than sets
+
+// IN JS - MAP IS A DATA STRUCTURE THAT WE CAN USE TO MAP VALUES TO KEYS
+
+// SO JUST LIKE IN OBJECTS - DATA IS STORES IN KEY VALUE PAIRS IN MAPS
+
+// ---------->>>>> THE BIG DIFFERENCE BETWEEN OBJECTS AND MAPS IS THAT IN MAPS THE KEYS CAN HAVE ANY TYPE!!!!!!!!
+
+// THE EASIEST WAY TO CREATE A MAP IS TO CREATE AN EMPTY MAP:
+
+const rest = new Map();
+
+// then to fill up the map we can use the set method
+
+rest.set('name', 'Classico Italiano'); // here we pass it into arguments - THE FIRST IS THE KEY NAME - THE SET METHOD IS SIMILAR TO THE ADD METHOD IN SETS (DATA TYPE)
+rest.set(1, 'Firenze, Italy');
+rest.set(2, 'Lisbon, Portugal');
+
+// THE SET METHOD ALSO RETURNS THE MAP
+
+console.log(rest.set(3, 'Campos, Brazil'));
+
+// THE FACT THAT THE SET METHOD ACTUALLY RETURNS THE UPDATED MAP ALLOWS US TO CHANGE THE SET METHOD LIKE THIS: CHAIN THE SET METHOD:
+
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'we are open')
+  .set(false, 'we are closed');
+
+// IN ORDER TO READ DATA FROM THE MAP WE USE THE GET METHOD - THE GET METHOD IS AVAILABLE ON ALL MAPS
+console.log(rest.get('name'));
+console.log(rest.get(true));
+
+const time = 21;
+
+console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // HAVING BOOLEANS AS MAP KEYS
+
+// ---------------------------->  OTHER METHODS BESIDES GET ANS SET TO USE WITH MAPS:
+
+// 3- CHECK IF A MAP CONTAINS A CERTAIN KEY:
+
+console.log(rest.has('categories'));
+
+// DELETING ITENS - WE SPECIFY WITH THE KEY
+
+rest.delete(2); // location 2
+
+// WE CAN ALSO DELETE PROPERTIES FROM OBJECTS USING SOMETHING CALLED DELETE OPERATOR
+
+// OBJECTS HAVE A METHOD CALLED hasOwnProperty
+
+// MAPS ALSO HAVE THE SIZE PROPERTY
+
+console.log(rest);
+console.log(rest.size);
+
+// REMOVE ALL THE ELEMENTS FROM THE MAP
+
+// rest.clear();
+
+// WE CAN USE ARRAYS OR OBJECTS AS MAP KEYS
+
+const array = [1, 2];
+rest.set(array, 'Test'); // BEFORE IT WASN'T IN A VARIABLE
+rest.set(document.querySelector('h1'), 'Heading'); // -------- > THE RESULT OF THIS WILL BE AN OBJECT
+
+console.log(rest);
+
+// BUT NOW TO GET THE DATA FROM THIS ARRAY
+
+console.log(rest.get(array)); // IT'S NOT GOING TO WORK BECAUSE ITS NOT A PRIMITIVE VALUE - IT DOES NOT REFER TO THE SAME PLACE IN MEMORY
+
+// TO MAKE IT WORK WE NEED TO STORE THE ARRAY IN A VARIABLE
+
+// const array = [1, 2];
+
+// SO WE CAN USE OBJECTS AS MAP KEYS - SO WE CAN USE IT WITH DOM ELEMENTS
