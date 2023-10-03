@@ -56,6 +56,68 @@ const restaurant = {
   },
 };
 
+// ============================================================> MAPS - ITERATION:
+
+// We can populate a new map by:
+
+// 1- CREATING AN EMPTY MAP AND POPULATE IT WITH THE SET METHOD;
+
+// 2- CREATING A NEW MAP WITHOUT HAVING TO USE THE SET METHOD:
+
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct!!!!'],
+  [false, 'Try again'],
+]); // populate with multiples arrays - the first position is going to be the key and the second position is going to be the value
+
+console.log(question);
+
+// SO THERE'S AN EASY WAY TO CONVERT FROM OBJECTS TO MAPS
+
+console.log(Object.entries(restaurant.openingHours)); // the structure is the same - ana rray of arrays
+
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
+
+console.log(hoursMap);
+
+// -------------------------- ITERATION:
+
+// ITERATION IS POSSIBLE ON MAPS - MAPS ARE ALSO ITERABLES
+
+// SO THE FOR LOOP IS ALSO AVAILABLE FOR THEM
+
+// - WE ONLY WANT TO PRINT IF THE KEY IS A NUMBER
+
+// print the question to the console:
+
+// we can use the boolean keys to print messages
+
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+
+// TO GET THE ANSWER FROM THE USER:
+
+const answer = Number(prompt('Your answer')); // also convert to a number because we will compare the number with the key
+console.log(answer);
+
+console.log(question.get(question.get('correct') === answer));
+
+// CONVERT MAP TO AN ARRAY - UNPACKING IT WITH THE SPREAD OPERATOR
+
+console.log([...question]);
+
+console.log([...question.values()]);
+
+// SOMETIMES WE ALSO NEED TO CONVERT THE MAP BACK TO AN ARRAY
+
 // -------------------------------------------> MAPS : FUNDAMENTALS
 
 // new feature
