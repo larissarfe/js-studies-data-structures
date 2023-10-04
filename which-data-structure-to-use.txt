@@ -1,0 +1,92 @@
+
+==========================> WHICH DATA STRUCTURE TO USE? 
+
+--------------------------------> DATA STRUCTURE OVERVIEW: 
+
+- where data can actually come from? There are essentially 3 sources of data 
+
+
+----> SOURCES OF DATA: 
+
+1- From the program itself: Data written directily in source code (ex: status messages);
+
+2- From the user UI(webpage) : Data inpunt from the user or data written in Dom (tasks in todo app);
+
+3- From external sources: Data fetched (buscado) for ex from web API (recipe objects)
+
+
+obs: API -> Application Programming Interface - we can use web API to get data FROM OTHER WEB applications 
+
+---------> NO MATTER WHERE THE DATA COMES FROM - AND WHAT KIND OF DATA IT IS - WE USUALLY ALWAYS HAVE COLLECTIONS OF DATA THAT WE THEN NEED TO STORE SOMEWHERE 
+
+-> WHERE DO WE STORE COLLECTIONS OF DATA? -> WE USE DATA STRUCTURES 
+
+-> THERE ARE FOUR BUILT IN DATA STRUCTURES IN JS 
+
+-> THINGS TO ASK: 
+
+1- SIMPLE LIST OF DATA? -> ARRAY OR SETS - SIMPLY HAVE THE VALUES WITHOUT ANY DESCRIPTION 
+
+2- IF WE NEED KEY VALUE PAIRS -> AN OBJECT OR MAP - THE KEYS ALLOW US TO DESCRIBE VALUES 
+
+OBS: DATA FROM WEB APIs COMES IN THE FORM OS JSON - IS STORED IN AN OBJECT - NOT AN ARRAY BECAUSE THE KEY VALUE PAIRS ARE IMPORTANT 
+
+--- WE CAN CREATE AN ARRAY OF OBJECTS IN JS 
+
+===============================================================================
+
+-> BUILT IN DATA STRUCTURES: ARRAYS VS SETS AND OBJECTS VS MAPS 
+
+
+1- ARRAYS VS SETS: We use them for simple lists of values - when we do not need to describe the values 
+
+
+- ARRAYS: 
+    You should use arrays whenever you need to store values IN ORDER AND WHEN THESE VALUES CONTAIN DUPLICATES 
+
+    Use when you need to manipulate data 
+
+
+- SETS: 
+
+    - Use when you need to work with unique values 
+
+    - Use when high performance is really important - it's faster to manipulate
+
+    - Use to remove duplicates from arrays  
+
+
+==================================================
+
+2- OBJECTS VS MAPS 
+
+We use these data structures whenever we need to describe the values using keys 
+
+
+- OBJECTS :
+
+    - mORE TRADITIONAL KEY/VALUE SOTRE 
+
+    - Easier to write and access values with . and [] 
+
+
+    -----> USE OBJECTS WHEN YOU NEED TO INCLUDE FUNCTIONS (METHODS)
+
+    -----> USE WHEN WORKING WITH JSON (can convert to map)
+
+
+- MAPS: 
+
+    - Better performance 
+
+    - KEYS CAN HAVE ANY TYPE OF DATA 
+
+    - Easy to iterate 
+
+    - Easy to compute size 
+
+    ----> USE MAPS WHEN YOU SIMPLY NEED TO MAP KEY TO VALUES; 
+
+    ----> USE MAPS WHEN YOU NEED KEYS THAT ARE NOT STRINGS 
+
+
