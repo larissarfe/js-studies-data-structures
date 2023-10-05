@@ -1,0 +1,49 @@
+
+
+1. Create an array 'events' of the different game events that happened (no duplicates)
+
+2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+
+3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+
+4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+      [FIRST HALF] 17: ⚽️ GOAL
+
+
+
+
+    const staffUnique = [...new Set(staff)]; // CREATE AN ARRAY AROUND THIS AND UNPACK IT  // WE PASS THE ITERABLE IN
+
+console.log(staffUnique);
+
+// NOW WE WANT THE staffUnique TO BE AN ARRAY - TO CONVERT IT - THE CONVERSION IS EASY BECAUSE THEY'RE BOTH ITERABLES
+
+// THE SPREAD OPERATOR WORKS ON ALL ITERABLES
+
+// SO WE CAN USE THE SPREAD OPERATOR AND UNPACK THE ENTIRE SET USING THE SPREAD OPERATOR AND THEN THESE ELEMENTS WILL BE PUT INTO THE NEW ARRAY
+
+
+
+// ITERATION IS POSSIBLE ON MAPS - MAPS ARE ALSO ITERABLES
+
+// SO THE FOR LOOP IS ALSO AVAILABLE FOR THEM
+
+// - WE ONLY WANT TO PRINT IF THE KEY IS A NUMBER
+
+// print the question to the console:
+
+// we can use the boolean keys to print messages
+
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+
+{
+  if( key > 45) {
+    console.log(`[FIRST HALF]: ${value}´);
+   
+  }
+}
